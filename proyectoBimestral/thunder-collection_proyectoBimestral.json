@@ -1,0 +1,359 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "proyectoBimestral",
+    "dateExported": "2024-02-23T23:26:38.526Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "0bb571d3-af8f-448f-9572-a762262e8dab",
+            "name": "admin",
+            "containerId": "",
+            "created": "2024-02-23T19:19:23.232Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "d37ff0ca-924c-4945-a5a9-4f228b2b4f55",
+            "name": "client",
+            "containerId": "",
+            "created": "2024-02-23T19:19:30.111Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "cbf4e720-922d-49aa-8892-6b7b5e16e783",
+            "name": "public",
+            "containerId": "",
+            "created": "2024-02-23T19:19:46.816Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "219a0d1b-b465-441b-b493-f6fc76516e6d",
+            "name": "Category",
+            "containerId": "0bb571d3-af8f-448f-9572-a762262e8dab",
+            "created": "2024-02-23T19:37:09.532Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "5791af4b-9f93-45f8-8e6c-7fe4c289c64e",
+            "name": "Product",
+            "containerId": "0bb571d3-af8f-448f-9572-a762262e8dab",
+            "created": "2024-02-23T19:37:19.708Z",
+            "sortNum": 60000
+        },
+        {
+            "_id": "9a4c01bf-e059-42d3-a979-0a1609629924",
+            "name": "User",
+            "containerId": "0bb571d3-af8f-448f-9572-a762262e8dab",
+            "created": "2024-02-23T23:01:42.535Z",
+            "sortNum": 70000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "97df1153-3dbf-466a-aacc-815d989b45b8",
+            "colId": "66b893b0-77ed-4f3c-bff7-83c35736331c",
+            "containerId": "cbf4e720-922d-49aa-8892-6b7b5e16e783",
+            "name": "register",
+            "url": "/user/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-23T19:19:56.176Z",
+            "modified": "2024-02-23T21:43:09.674Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Julio"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "Garcia"
+                    },
+                    {
+                        "name": "username",
+                        "value": "jgarcia"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    },
+                    {
+                        "name": "email",
+                        "value": "evasquez@gmail.com"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "45784645"
+                    },
+                    {
+                        "name": "address",
+                        "value": "Ciudad de Guatemala"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "da5a7759-981e-48a4-bb98-1f6c2bbfacf8",
+            "colId": "66b893b0-77ed-4f3c-bff7-83c35736331c",
+            "containerId": "219a0d1b-b465-441b-b493-f6fc76516e6d",
+            "name": "Create category",
+            "url": "/category/create",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-23T19:26:12.725Z",
+            "modified": "2024-02-23T22:40:13.051Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4ZjBlOWFmMjZhZGU3ZjA4M2I1OWMiLCJ1c2VybmFtZSI6ImV2YXNxdWV6IiwibmFtZSI6IkV2ZXIiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MjgwMDQsImV4cCI6MTcwODczODgwNH0.JLFlMYuht-sOY5a8uvEZRSYJaGyZeRT9B9XdroPN5GE"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Tecnología"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Los aparatos mas modernos para tus necesidades"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "a057640a-d0fa-4f98-ace5-63eaa14c9d1c",
+            "colId": "66b893b0-77ed-4f3c-bff7-83c35736331c",
+            "containerId": "cbf4e720-922d-49aa-8892-6b7b5e16e783",
+            "name": "login",
+            "url": "/user/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-23T19:20:01.894Z",
+            "modified": "2024-02-23T19:27:58.686Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "evasquez"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345678"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "f5e8baaf-3a77-4863-8310-207fe82beb30",
+            "colId": "66b893b0-77ed-4f3c-bff7-83c35736331c",
+            "containerId": "219a0d1b-b465-441b-b493-f6fc76516e6d",
+            "name": "Update category",
+            "url": "/category/update/65d8f205dc001c257eed794f",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-02-23T19:26:22.973Z",
+            "modified": "2024-02-23T19:30:33.252Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4ZjBlOWFmMjZhZGU3ZjA4M2I1OWMiLCJ1c2VybmFtZSI6ImV2YXNxdWV6IiwibmFtZSI6IkV2ZXIiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MTY0NzgsImV4cCI6MTcwODcyNzI3OH0.SK-1Bh8xUztToDbdJFwIOTlvOyqc9KjFn5jawIpZnLw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "description",
+                        "value": "Todo para equipar tu hogar lo encuentras aqui"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "7acf7ad7-3b64-4626-a49e-21f825b0580e",
+            "colId": "66b893b0-77ed-4f3c-bff7-83c35736331c",
+            "containerId": "219a0d1b-b465-441b-b493-f6fc76516e6d",
+            "name": "Delete category",
+            "url": "/category/delete/65d8f2fcc7be7d48408d023d",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-02-23T19:26:30.757Z",
+            "modified": "2024-02-23T19:33:37.468Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4ZjBlOWFmMjZhZGU3ZjA4M2I1OWMiLCJ1c2VybmFtZSI6ImV2YXNxdWV6IiwibmFtZSI6IkV2ZXIiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MTY0NzgsImV4cCI6MTcwODcyNzI3OH0.SK-1Bh8xUztToDbdJFwIOTlvOyqc9KjFn5jawIpZnLw"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "23f171e9-ec51-408d-9044-903fcd8ded10",
+            "colId": "66b893b0-77ed-4f3c-bff7-83c35736331c",
+            "containerId": "cbf4e720-922d-49aa-8892-6b7b5e16e783",
+            "name": "delete user",
+            "url": "/user/delete",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-02-23T19:34:20.788Z",
+            "modified": "2024-02-23T19:36:44.567Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f9df1843-9daf-4000-930d-903c179d1ba0",
+            "colId": "66b893b0-77ed-4f3c-bff7-83c35736331c",
+            "containerId": "cbf4e720-922d-49aa-8892-6b7b5e16e783",
+            "name": "Update user",
+            "url": "/user/update",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-02-23T19:34:13.751Z",
+            "modified": "2024-02-23T19:36:31.974Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1563ab1a-8bb4-44d1-8b87-019c0c0963c9",
+            "colId": "66b893b0-77ed-4f3c-bff7-83c35736331c",
+            "containerId": "5791af4b-9f93-45f8-8e6c-7fe4c289c64e",
+            "name": "create product",
+            "url": "/product/create",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-02-23T21:24:00.038Z",
+            "modified": "2024-02-23T22:52:29.252Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MTE1NDgyOTczOGVmMGRlMDNmMjkiLCJ1c2VybmFtZSI6ImV2YXNxdWV6IiwibmFtZSI6IkV2ZXIiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MjUxNjMsImV4cCI6MTcwODczNTk2M30.I4EVJ-ggKKwZJOI0ub5J2dbVuJONaobnyzC_bcmS8vw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "Pala de jardin"
+                    },
+                    {
+                        "name": "description",
+                        "value": "Pala mediana de jardin perfecta para espacios reducidos"
+                    },
+                    {
+                        "name": "category",
+                        "value": "65d8f1cedc001c257eed794c"
+                    },
+                    {
+                        "name": "price",
+                        "value": "399 99 "
+                    },
+                    {
+                        "name": "stock",
+                        "value": "78"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "ddbc15b3-cdf3-45e5-949a-60545c16c33f",
+            "colId": "66b893b0-77ed-4f3c-bff7-83c35736331c",
+            "containerId": "5791af4b-9f93-45f8-8e6c-7fe4c289c64e",
+            "name": "update product",
+            "url": "/product/update/65d91f7ca82d32ba6b757b87",
+            "method": "PUT",
+            "sortNum": 100000,
+            "created": "2024-02-23T22:47:40.978Z",
+            "modified": "2024-02-23T22:49:52.906Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5MTE1NDgyOTczOGVmMGRlMDNmMjkiLCJ1c2VybmFtZSI6ImV2YXNxdWV6IiwibmFtZSI6IkV2ZXIiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MjUxNjMsImV4cCI6MTcwODczNTk2M30.I4EVJ-ggKKwZJOI0ub5J2dbVuJONaobnyzC_bcmS8vw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "description",
+                        "value": "Monitor de 25 pulgadas nuevo marca Samsung"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "f131f700-43ec-4768-ade1-2da48c274f3c",
+            "colId": "66b893b0-77ed-4f3c-bff7-83c35736331c",
+            "containerId": "5791af4b-9f93-45f8-8e6c-7fe4c289c64e",
+            "name": "delete product",
+            "url": "/product/delete/65d9229de5a711b722d50566",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2024-02-23T22:52:38.653Z",
+            "modified": "2024-02-23T22:56:40.720Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "001f38b1-4ff2-4e80-809a-ad7aa14c8a84",
+            "colId": "66b893b0-77ed-4f3c-bff7-83c35736331c",
+            "containerId": "9a4c01bf-e059-42d3-a979-0a1609629924",
+            "name": "change role",
+            "url": "/user/changeRole/65d7bc30716745a9dc91ccd4",
+            "method": "PUT",
+            "sortNum": 120000,
+            "created": "2024-02-23T23:13:55.087Z",
+            "modified": "2024-02-23T23:16:56.920Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ4ZjBlOWFmMjZhZGU3ZjA4M2I1OWMiLCJ1c2VybmFtZSI6ImV2YXNxdWV6IiwibmFtZSI6IkV2ZXIiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MDg3MzAyMDMsImV4cCI6MTcwODc0MTAwM30.WR7q6gI-0nq1DEpirE8gfUAX6l44qFuqe2adOXZ5Zsw"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "role",
+                        "value": "ADMIN"
+                    }
+                ]
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:3500"
+        }
+    }
+}
