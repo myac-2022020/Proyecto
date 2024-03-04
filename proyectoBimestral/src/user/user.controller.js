@@ -66,34 +66,43 @@ export const changeRole = async(req, res)=>{
     }
 }
 
-export const update =  async(req, res)=>{
+export const update = async (req, res) => {
     try {
-        let { id } = req.params
-        let data = req.body
-        let update = checkUpdate(data, id)
-        if(!update) return res.status(400).send({message:'Have submitted some data that cannot be update or missing data'})
+        let { id } = req.params;
+        let data = req.body;
+        let update = checkUpdate(data, id);
+        console.log('The user id is ', id)
+        let idToken = req.uid
+        console.log('The user id by token is ',idToken)
+        if(id !== idToken) return res.send({message: 'You can only update your user data.'})
+        if (!update) return res.status(400).send({ message: 'Have submitted some data that cannot be updated or missing data' });
         let updateUser = await User.findOneAndUpdate(
-            {_id: id}, 
-            data, 
-            {new: true}
-        )
-        if(!updateUser) if (!update ) return res.status(400).send({message: 'User not found and not updated'})
-            return res.send({message:'Update user', updateUser})
+            { _id: id },
+            data,
+            { new: true }
+        );
+        if (!updateUser) if (!update) return res.status(400).send({ message: 'User not found and not updated' });
+        return res.send({ message: 'Update user', updateUser });
     } catch (err) {
-        console.error(err)
-        if(err.keyValue.username) return res.status(400).send({message: `Username ${err.keyValue.username} is already taken`})
-        return res.status(500).send({message:'Error updating account'})
+        console.error(err);
+        if (err.keyValue.username) return res.status(400).send({ message: `Username ${err.keyValue.username} is already taken` });
+        return res.status(500).send({ message: 'Error updating account' });
     }
-}
+};
+
 
 export const deleteU = async(req, res)=>{
     try {
         let { id } = req.params    
         let deletedUser = await User.findOneAndDelete({_id: id})
-        if(!deletedUser) return res.status(404).send({message: 'The acount not found and not deleted'})
+        console.log('The user id is ', id)
+        let idToken = req.uid
+        console.log('The user id by token is ',idToken)
+        if(id !== idToken) return res.send({message: 'You can only delete your account.'})
+        if(!deletedUser) return res.status(404).send({message: 'The account not found and not deleted'})
         return res.send({message:`Account whit username ${deletedUser.username} delete successfully`})
     } catch (err) {
         console.error(err)
-        return res.status(500).send({message: 'Error deleting acount'})
+        return res.status(500).send({message: 'Error deleting account'})
     }
 }

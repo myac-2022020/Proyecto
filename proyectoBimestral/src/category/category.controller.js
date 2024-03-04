@@ -1,6 +1,7 @@
 'use strict'
 
-import Category from './category.model.js';
+import Category from './category.model.js'
+import Product from '../product/product.model.js'
 
 export const test = (req, res) => {
     return res.send('Hello world');
@@ -33,16 +34,44 @@ export const updateCategory = async (req, res) => {
     }
 };
 
-export const deleteCategory = async (req, res) => {
+export const deleteCategory = async(req, res)=>{
     try {
         let { id } = req.params;
+        let data = req.body
         let deletedCategory = await Category.findByIdAndDelete(id);
         if (!deletedCategory) {
             return res.status(404).send({ message: 'Category not found or not deleted' });
         }
-        return res.send({ message: `Category deleted successfully` });
+        const defaultCategory = await Category.findOne({name: 'Default'})
+        console.log('The category is ', defaultCategory)
+        if(!defaultCategory){
+            data.name = 'Default'
+            data.description = 'Category for default.'
+            console.log('Data for category ', data)
+            let category = new Category(data)
+            await category.save()
+            console.log('Category default save')
+        }
+        const products = await Product.find()
+        if(products.length == 0){
+            return res.send({message: 'The selected category does not have products.'})
+        }
+        await Product.updateMany({ category: id }, { $set: { category: defaultCategory._id } });
+        console.log('Existing category')
+        return res.send({message: 'Delete category successfully.'})
     } catch (err) {
         console.error(err);
-        return res.status(500).send({ message: 'Error deleting category' });
+        return res.status(500).send({message: 'Error deleting category.'})
     }
-};
+}
+
+export const listCategory = async(req, res)=>{
+    try {
+        const categories = await Category.find()
+        if(categories.length === 0) return res.status(404).send({message: 'No categories found'})
+        return res.send({message: 'Categories found. ',categories})
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({message: 'Error listing categories'})
+    }
+}

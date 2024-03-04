@@ -47,3 +47,33 @@ export const deleteProduct = async (req, res) => {
         return res.status(500).send({ message: 'Error deleting product' });
     }
 };
+
+export const listProducts = async (req, res) => {
+    try {
+        const products = await Product.find().populate('category', ['name']);
+
+        if (products.length === 0) {
+            return res.status(404).send({ message: 'Products not found' });
+        }
+        return res.send({ message: 'Products found', products });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send({ message: 'Error listing products' });
+    }
+};
+
+
+export const searchProduct = async(req, res)=>{
+    try {
+        let { search } = req.body
+        let product = await Product.find(
+            {name: search}
+        ).populate('category', ['name'])
+        if(product.length==0) return res.status(404).send({message: 'Product not found.'})
+        return res.send({message: 'Products found ', product})
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send({message: 'Error when searching for product.'})
+    }
+}

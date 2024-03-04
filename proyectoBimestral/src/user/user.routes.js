@@ -1,19 +1,8 @@
 'use strict'
-//Rutas del usuario
 
 import express from 'express'
-import { 
-    validateJwt,
-    isAdmin
-} from '../middlewares/validate.jwt.js'
-import {
-    test,
-    register, 
-    login, 
-    update, 
-    deleteU,
-    changeRole
-} from './user.controller.js'
+import {  validateJwt, isAdmin } from '../middlewares/validate.jwt.js'
+import { test, register, login, update, deleteU, changeRole } from './user.controller.js'
 
 const api = express.Router()
 
