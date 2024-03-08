@@ -1,20 +1,30 @@
-'use strict'
-
-import { Schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose';
 
 const trolleySchema = Schema({
-    user:{
+    user: {
         type: Schema.ObjectId,
         ref: 'user',
-        required: true
+        required: true,
     },
-    products:{
+    product: {
         type: Schema.ObjectId,
-        ref: 'product',
-        required: true
+        ref: 'Product',
+        required: true,
     },
-},{
-    versionKey: false
-})
+    amount: {
+        type: Number,
+        required: true,
+    },
+    totalPrice: {
+        type: Number,
+        //required: true,
+    },
+    dateAdded: {
+        type: Date,
+        default: Date.now,
+    }
+}, {
+    versionKey: false,
+});
 
-export default model('trolley', trolleySchema)
+export default model('trolley', trolleySchema);

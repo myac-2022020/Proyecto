@@ -54,7 +54,7 @@ export const deleteCategory = async(req, res)=>{
         }
         const products = await Product.find()
         if(products.length == 0){
-            return res.send({message: 'The selected category does not have products.'})
+            return res.send({message: 'The selected category does not have products, deleted successfully'})
         }
         await Product.updateMany({ category: id }, { $set: { category: defaultCategory._id } });
         console.log('Existing category')

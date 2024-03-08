@@ -1,12 +1,12 @@
 'use strict'
 
 import { Router } from 'express'
-import { addToCart, test } from './trolley.controller.js'
+import { extendBill, test } from './bill.controller.js'
 import { validateJwt } from '../middlewares/validate.jwt.js'
 
 const api = Router()
 
 api.get('/test', test)
-api.post('/addToCart', [validateJwt], addToCart)
+api.post('/extend', [validateJwt], extendBill)
 
 export default api

@@ -1,6 +1,7 @@
 'use strict'
 
 import Product from './product.model.js'
+import Category from '../category/category.model.js'
 
 export const test = (req, res) => {
     return res.send('Hello world');
@@ -62,6 +63,33 @@ export const listProducts = async (req, res) => {
     }
 };
 
+export const productsByCategory = async(req, res)=>{
+    try {
+        let idCategory = req.params.id
+        console.log(idCategory);
+        let category = await Category.findOne({_id: idCategory})
+        if(!category) return res.status(404).send({message: 'Category not found'})
+        console.log(category);
+        let products = await Product.find({category: idCategory}, {category: 0})
+        if(products.length === 0) return res.status(404).send({message: 'Products not found'})
+        return res.send({message: 'Products found ', products})
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send({message: 'Error to list'})
+    }
+}
+
+export const ListNullProducts = async(req, res)=>{
+    try {
+        let stock = 0
+        let products = await Product.find({stock: 0})
+        if(products.length === 0) return res.status(404).send({message: 'Products not found'})
+        return res.send({message: 'Products found ', products})
+    } catch (err) {
+        console.error(err);
+        return res.status(500).send({message: 'Error for list null products'})
+    }
+}
 
 export const searchProduct = async(req, res)=>{
     try {
@@ -71,7 +99,6 @@ export const searchProduct = async(req, res)=>{
         ).populate('category', ['name'])
         if(product.length==0) return res.status(404).send({message: 'Product not found.'})
         return res.send({message: 'Products found ', product})
-
     } catch (err) {
         console.error(err);
         return res.status(500).send({message: 'Error when searching for product.'})

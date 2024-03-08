@@ -1,6 +1,7 @@
 'use strict'
 
 import User from './user.model.js'
+import Trolley from '../trolley/trolley.model.js'
 import { checkPassword, encrypt, checkUpdate} from '../utils/validator.js'
 import { generateJWT } from '../utils/jwt.js'
 import { validateJwt } from '../middlewares/validate.jwt.js'
@@ -26,12 +27,42 @@ export const register = async(req, res)=>{
     }
 }
 
-export const login = async(req, res) => {
-    try{
-        let { username, password } = req.body 
-        let user = await User.findOne({ username })
+export const login = async(req, res)=>{
+    try {
+        let { username, email, password } = req.body
+        if(!username){
+            console.log('Logged with gmail')
+            let gmail = await User.findOne({email})
+            if(gmail && await checkPassword(password, gmail.password)){
+                let loggedUser={
+                    uid: gmail._id,
+                    username: gmail.username,
+                    email: gmail.email,
+                    name: gmail.name,
+                    role: gmail.role
+                }
+                let token = await generateJWT(loggedUser)
+                return res.send({message: `Welcome ${gmail.name}`, loggedUser, token})
+            }
+        }else{
+            console.log('Logged with username')
+            let user = await User.findOne({email})
+            if(user && await checkPassword(password, user.password)){
+                let loggedUser={
+                    uid: user._id,
+                    username: user.username,
+                    email: user.email,
+                    name: user.name,
+                    role: user.role
+                }
+                let token = await generateJWT(loggedUser)
+                return res.send({message: `Welcome ${user.name}`, loggedUser, token, shopings})
+            
+            }
+        }
+        let user = await User.findOne({username})
         if(user && await checkPassword(password, user.password)){
-            let loggedUser = { 
+            let loggedUser={
                 uid: user._id,
                 username: user.username,
                 name: user.name,
@@ -40,9 +71,8 @@ export const login = async(req, res) => {
             let token = await generateJWT(loggedUser)
             return res.send({message: `Welcome ${user.name}`, loggedUser, token})
         }
-        return res.status(404).send({message: 'Invalid Credentials'})
-    }catch(err){
-        console.error(err)
+    } catch (err) {
+        console.error(err);
         return res.status(500).send({message: 'Error to login'})
     }
 }
